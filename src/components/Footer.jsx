@@ -11,6 +11,7 @@ import LanguageSelector from './LanguageSelector';
 ensureConfig([
   'LMS_BASE_URL',
   'LOGO_TRADEMARK_URL',
+  'INDIGO_FOOTER_NAV_LINKS',
 ], 'Footer component');
 
 const EVENT_NAMES = {
@@ -42,6 +43,15 @@ class SiteFooter extends React.Component {
     } = this.props;
     const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
     const config = getConfig();
+    const indigoFooterNavLinks = config.INDIGO_FOOTER_NAV_LINKS || [
+      { url: '/about', title: intl.formatMessage(messages['footer.edxLinks.about']) },
+      { url: '/blog', title: intl.formatMessage(messages['footer.connectLinks.blog']) },
+      { url: '/donate', title: intl.formatMessage(messages['footer.connectLinks.donate']) },
+      { url: '/tos', title: intl.formatMessage(messages['footer.legalLinks.termsOfService']) },
+      { url: '/privacy', title: intl.formatMessage(messages['footer.legalLinks.privacyPolicy']) },
+      { url: '/help', title: intl.formatMessage(messages['footer.connectLinks.help']) },
+      { url: '/contact', title: intl.formatMessage(messages['footer.connectLinks.contact']) },
+    ];
 
     return (
       <div className="wrapper wrapper-footer">
@@ -70,6 +80,15 @@ class SiteFooter extends React.Component {
                 </li>
               </ul>
             </div>
+            <nav className="nav-colophon">
+              <ol>
+                {indigoFooterNavLinks.map((link) => (
+                  <li key={link.url}>
+                    <a href={`${config.LMS_BASE_URL}${link.url}`}>{link.title}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           </div>
           <span className="copyright-site">{intl.formatMessage(messages['footer.copyright.text'])}</span>
           {showLanguageSelector && (
