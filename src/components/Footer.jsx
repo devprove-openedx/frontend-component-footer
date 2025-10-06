@@ -10,8 +10,7 @@ import LanguageSelector from './LanguageSelector';
 
 ensureConfig([
   'LMS_BASE_URL',
-  'LOGO_TRADEMARK_URL',
-  'INDIGO_FOOTER_NAV_LINKS',
+  'LOGO_TRADEMARK_URL'
 ], 'Footer component');
 
 const EVENT_NAMES = {
@@ -41,9 +40,10 @@ class SiteFooter extends React.Component {
       logo,
       intl,
     } = this.props;
+    
     const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
     const config = getConfig();
-    const indigoFooterNavLinks = config.INDIGO_FOOTER_NAV_LINKS || [
+    const indigoFooterNavLinks = [
       { url: '/about', title: intl.formatMessage(messages['footer.edxLinks.about']) },
       { url: '/blog', title: intl.formatMessage(messages['footer.connectLinks.blog']) },
       { url: '/donate', title: intl.formatMessage(messages['footer.connectLinks.donate']) },
@@ -118,7 +118,10 @@ SiteFooter.propTypes = {
 SiteFooter.defaultProps = {
   logo: undefined,
   onLanguageSelected: undefined,
-  supportedLanguages: [],
+  supportedLanguages: [
+    { label: 'English', value: 'en' },
+    { label: 'Українська', value: 'uk' },
+  ],
 };
 
 export default injectIntl(SiteFooter);
