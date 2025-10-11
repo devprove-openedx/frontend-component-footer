@@ -118,10 +118,7 @@ SiteFooter.propTypes = {
 SiteFooter.defaultProps = {
   logo: undefined,
   onLanguageSelected: undefined,
-  supportedLanguages: [
-    { label: 'English', value: 'en' },
-    { label: 'Українська', value: 'uk' },
-  ],
+  supportedLanguages: [],
 };
 
 export default injectIntl(SiteFooter);
