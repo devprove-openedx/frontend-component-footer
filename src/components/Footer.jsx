@@ -46,7 +46,6 @@ class SiteFooter extends React.Component {
     const indigoFooterNavLinks = [
       { url: '/about', title: intl.formatMessage(messages['footer.edxLinks.about']) },
       { url: '/blog', title: intl.formatMessage(messages['footer.connectLinks.blog']) },
-      { url: '/donate', title: intl.formatMessage(messages['footer.connectLinks.donate']) },
       { url: '/tos', title: intl.formatMessage(messages['footer.legalLinks.termsOfService']) },
       { url: '/privacy', title: intl.formatMessage(messages['footer.legalLinks.privacyPolicy']) },
       { url: '/help', title: intl.formatMessage(messages['footer.connectLinks.help']) },
